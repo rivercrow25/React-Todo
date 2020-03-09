@@ -14,6 +14,9 @@ class App extends React.Component {
       id: data.length,
       completed: false
     }
+    this.setState({
+      data: localStorage.getItem('data') ? JSON.parse(localStorage.getItem('data')) : []
+    })
   }
   // you will need a place to store your state in this component.
   // design `App` to be the parent component of your application.
@@ -34,10 +37,6 @@ class App extends React.Component {
     })
   }
 
-  saved = () => {
-    localStorage.setItem('data', JSON.stringify(this.state.data))
-  }
-
   deleteCompleted = () => {
     this.setState({
       data: this.state.data.filter(item => item.completed === false)
@@ -56,11 +55,11 @@ class App extends React.Component {
   }
 
   render() {
-
+    console.log(this.state)
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
-        <TodoForm deleteCompleted={this.deleteCompleted} addItem={this.addItem} />
+        <TodoForm data={this.state} deleteCompleted={this.deleteCompleted} addItem={this.addItem} />
         <TodoList toggleCompleted={this.toggleCompleted} data={this.state.data} />
       </div>
     );

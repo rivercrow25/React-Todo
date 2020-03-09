@@ -21,6 +21,7 @@ class TodoForm extends React.Component {
         this.setState({
             name: ''
         })
+        localStorage.setItem('data', JSON.stringify(this.props.data))
     }
 
     handleCompleted = () => {
@@ -28,7 +29,6 @@ class TodoForm extends React.Component {
     }
 
     render() {
-        console.log(this.props)
         return (
             <form onSubmit={this.handleSubmit}>
                 <input onChange={this.handleChange} name='add-todo' value={this.state.name} />
