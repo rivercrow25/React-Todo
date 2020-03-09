@@ -13,9 +13,7 @@ class TodoForm extends React.Component {
         })
     }
 
-    saveList = () => {
-        localStorage.setItem('data', JSON.stringify(this.props.data))
-    }
+
 
     handleSubmit = event => {
         event.preventDefault()
@@ -23,7 +21,6 @@ class TodoForm extends React.Component {
         this.setState({
             name: ''
         })
-        this.saveList()
     }
 
     handleCompleted = () => {

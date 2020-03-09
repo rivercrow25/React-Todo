@@ -34,6 +34,10 @@ class App extends React.Component {
     })
   }
 
+  saved = () => {
+    localStorage.setItem('data', JSON.stringify(this.state.data))
+  }
+
   deleteCompleted = () => {
     this.setState({
       data: this.state.data.filter(item => item.completed === false)
@@ -56,7 +60,7 @@ class App extends React.Component {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
-        <TodoForm data={this.state} deleteCompleted={this.deleteCompleted} addItem={this.addItem} />
+        <TodoForm deleteCompleted={this.deleteCompleted} addItem={this.addItem} />
         <TodoList toggleCompleted={this.toggleCompleted} data={this.state.data} />
       </div>
     );
